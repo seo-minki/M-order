@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Bill from "@/app/pages/bill/page";
+import Bill from "@/app/(routes)/bill/page";
 
 export default function Home() {
   return (

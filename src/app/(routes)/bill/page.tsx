@@ -1,8 +1,7 @@
 "use client";
 
-import BillTitle from "@/app/components/bill/BillTitle";
-import ShareButton from "@/app/components/bill/ShareButton";
-// import BillDetail from "./components/BillDetail";
+import BillTitle from "@/components/bill/BillTitle";
+import ShareButton from "@/components/bill/ShareButton";
 import BillInfo from "./containers/BillInfo";
 
 type LedgerShortUrl = string;

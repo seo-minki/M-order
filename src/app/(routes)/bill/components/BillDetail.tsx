@@ -1,7 +1,7 @@
 "use client";
 
-import MerchantDetailButton from "@/app/components/bill/MerchantDetailButton";
-import { BillDetailOptions } from "@/app/types/bill";
+import MerchantDetailButton from "@/components/bill/MerchantDetailButton";
+import { BillDetailOptions } from "@/types/bill";
 
 export default function BillDetail({
   title,

@@ -1,4 +1,4 @@
-import { InfoMessageOptions } from "@/app/types/bill";
+import { InfoMessageOptions } from "@/types/bill";
 
 const InfoMessage = ({ messageTitle, message}: InfoMessageOptions) => {
   return (

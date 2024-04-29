@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import BillDetail from "../components/BillDetail";
 import InfoMessage from "../components/InfoMessage";
 
-import { BillInfoOptions } from "@/app/types/bill";
+import { BillInfoOptions } from "@/types/bill";
 
 const BillInfo = ({title, companyName, reason, amount, companyLogo, messageTitle, message}: BillInfoOptions) => {
   return (
