@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import defaultProfileImage from "public/images/profile_img.png"
+
 import MerchantDetailButton from "@/components/bill/MerchantDetailButton";
 import { BillDetailOptions } from "@/types/bill";
 
@@ -10,6 +13,7 @@ export default function BillDetail({
   amount,
   companyLogo,
 }: BillDetailOptions) {
+
   function BillInfoList(): JSX.Element {
     return (
       <ul>
@@ -31,14 +35,15 @@ export default function BillDetail({
       </ul>
     );
   }
+  
   return (
     <section className="relative py-2 px-4 bg-white rounded-xl shadow-[0_4px_8px_0_rgba(0,0,0,0.1)]">
       <h2 className="py-4 text-lg font-bold">{title}</h2>
-      <img
-        src={companyLogo}
+      <Image
+        src={companyLogo ? companyLogo : defaultProfileImage}
         alt="사업장 로고"
         className="absolute right-4 top-[-20px] w-[72px] rounded-[27px]"
-      ></img>
+      ></Image>
       <BillInfoList></BillInfoList>
     </section>
   );
