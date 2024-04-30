@@ -4,7 +4,7 @@ import Image from "next/image";
 import defaultProfileImage from "public/images/profile_img.png"
 
 import MerchantDetailButton from "@/components/payment/MerchantDetailButton";
-import { BillDetailOptions } from "@/types/bill";
+import { BillDetailOptions } from "@/types/billInfo";
 
 const BillDetail = ({
   title,
