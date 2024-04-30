@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import BillDetail from "../components/BillDetail";
-import InfoMessage from "../components/InfoMessage";
+import BillDetail from "@/components/payment/PaymentDetail";
+import InfoMessage from "@/components/payment/InfoMessage";
 
 import { BillInfoOptions } from "@/types/bill";
 

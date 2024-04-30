@@ -3,16 +3,16 @@
 import Image from "next/image";
 import defaultProfileImage from "public/images/profile_img.png"
 
-import MerchantDetailButton from "@/components/bill/MerchantDetailButton";
+import MerchantDetailButton from "@/components/payment/MerchantDetailButton";
 import { BillDetailOptions } from "@/types/bill";
 
-export default function BillDetail({
+const BillDetail = ({
   title,
   companyName,
   reason,
   amount,
   companyLogo,
-}: BillDetailOptions) {
+}: BillDetailOptions) => {
 
   function BillInfoList(): JSX.Element {
     return (
@@ -48,3 +48,5 @@ export default function BillDetail({
     </section>
   );
 }
+
+export default BillDetail;
