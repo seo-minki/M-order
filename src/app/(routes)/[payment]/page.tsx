@@ -6,6 +6,7 @@ import Title from "@/components/payment/Title";
 import ShareButton from "@/components/payment/ShareButton";
 import BillInfo from "@/containers/BillInfo";
 import PayTypes from "@/containers/PayTypes";
+import ButtonComponent from "@/components/ButtonComponent";
 
 type LedgerShortUrl = string;
 
@@ -13,6 +14,10 @@ const Payment = () => {
   const router = useRouter();
   const queryParams = useSearchParams();
   const ledgerShortUrl: LedgerShortUrl = usePathname().replace(/\//g, '');
+
+  const payment = () => {
+    console.log(1);
+  }
 
   return (
     <div className="bg-neutral-100 min-h-screen flex justify-center px-5">
@@ -32,6 +37,12 @@ const Payment = () => {
         ></BillInfo>
         <h2 className="px-2 mt-7 mb-3 text-[18px] font-bold">결제수단 선택</h2>
         <PayTypes></PayTypes>
+
+        <ButtonComponent
+          buttonText="결제하기"
+          classNames="block rounded-xl bg-black font-bold text-center text-[#00ff9a] h-[72px] w-full mt-7"
+          handleClick={payment}
+        ></ButtonComponent>
       </div>
     </div>
   );
