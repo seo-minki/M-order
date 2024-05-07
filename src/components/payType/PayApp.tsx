@@ -10,7 +10,7 @@ const PayApp = ({payAppName, payAppImage}: PayAppOptions) => {
         width={60}
         height={60}
       ></Image>
-      <p className="text-[10px] font-medium text-center mt-2">{ payAppName }</p>
+      <p className="text-[10px] font-medium text-center mt-2 text-[#46505a]">{ payAppName }</p>
     </div>
   )
 }
