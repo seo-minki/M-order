@@ -46,11 +46,20 @@ const payAppList: PayAppList[] = [
     pay_app_cd: "P0031",
     pay_auth_cd: "NONGHYUPAPPCARD",
   },
+  {
+    pay_app_mapping_cd: "PAM0F16B50AD5F611EEB81F00EE22AA4FC3",
+    pay_type_idx: "CARD_VAN",
+    img_path:
+      "https://s3.ap-northeast-2.amazonaws.com/paymint.linq.seoul/dev/system/payapp/PAYAPP_NH001_20200521111728_icon.png",
+    pay_app_nm: "NH올원페이",
+    pay_app_cd: "P0031",
+    pay_auth_cd: "NONGHYUPAPPCARD",
+  },
 ];
 
 const PayApps = () => {
   return (
-  <div className="py-2 px-2 flex flex-wrap">
+  <div className="pt-2 px-2 flex flex-wrap">
     {payAppList.map((payApp, index) => (
       <PayApp
         key={index}

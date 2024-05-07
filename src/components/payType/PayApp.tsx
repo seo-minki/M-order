@@ -3,7 +3,7 @@ import { PayAppOptions } from "@/types/payType";
 
 const PayApp = ({payAppName, payAppImage}: PayAppOptions) => {
   return (
-    <div className="px-2">
+    <div className="px-2 pb-4">
       <Image 
         src={payAppImage} alt="결제앱 이미지"
         className="rounded-[14px]"
