@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import defaultProfileImage from "public/images/profile_img.png"
-
 import MerchantDetailButton from "@/components/payment/MerchantDetailButton";
 import { BillDetailOptions } from "@/types/billInfo";
+import { comma } from "@/utils/helper";
 
 const BillDetail = ({
   title,
@@ -30,7 +30,7 @@ const BillDetail = ({
         </li>
         <li className="flex justify-between items-center py-4">
           <p className="text-sm text-black shrink-0">금액</p>
-          <span className="highlight-text">{amount}</span>
+          <span className="highlight-text">{ comma(amount) }</span>
         </li>
       </ul>
     );
