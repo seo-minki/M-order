@@ -14,7 +14,7 @@ const BillInfo = ({title, companyName, reason, amount, companyLogo, messageTitle
         amount={amount}
         companyLogo={companyLogo}
       ></BillDetail>
-      {message ? <InfoMessage messageTitle={messageTitle} message={message}></InfoMessage> : <></>}
+      {message && <InfoMessage messageTitle={messageTitle} message={message}></InfoMessage>}
     </Fragment>
   )
 }

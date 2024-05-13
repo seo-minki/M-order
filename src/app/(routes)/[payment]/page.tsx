@@ -32,7 +32,7 @@ const Payment = () => {
           reason="커피값 2월달"
           amount={50000}
           companyLogo=""
-          messageTitle="안내메123"
+          messageTitle="안내메세지"
           message="안녕"
         ></BillInfo>
         <h2 className="px-2 mt-7 mb-3 text-[18px] font-bold">결제수단 선택</h2>
