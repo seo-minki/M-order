@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
 import Title from "@/components/payment/Title";
@@ -7,6 +7,7 @@ import ShareButton from "@/components/payment/ShareButton";
 import BillInfo from "@/containers/BillInfo";
 import PayTypes from "@/containers/PayTypes";
 import ButtonComponent from "@/components/ButtonComponent";
+import PaymentWidget from "@/components/payment/PaymentWidget";
 
 type LedgerShortUrl = string;
 
@@ -15,8 +16,10 @@ const Payment = () => {
   const queryParams = useSearchParams();
   const ledgerShortUrl: LedgerShortUrl = usePathname().replace(/\//g, '');
 
+  const [payRequest, setPayRequest] = useState<boolean>(false);
+
   const payment = () => {
-    console.log(1);
+    setPayRequest(true);
   }
 
   return (
@@ -43,6 +46,8 @@ const Payment = () => {
           classNames="block rounded-xl bg-black font-bold text-center text-[#00ff9a] h-[72px] w-full mt-7"
           handleClick={payment}
         ></ButtonComponent>
+
+      {payRequest && <PaymentWidget/>}
       </div>
     </div>
   );

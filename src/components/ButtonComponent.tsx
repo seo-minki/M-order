@@ -9,7 +9,7 @@ interface ButtonProps {
 
 const ButtonComponent = ({classNames, buttonText, isDisabled, handleClick}: ButtonProps) => {
   return (
-    <button className={classNames} onClick={handleClick} disabled={true}>{ buttonText }</button>
+    <button className={classNames} onClick={handleClick} disabled={isDisabled}>{ buttonText }</button>
   )
 }
 

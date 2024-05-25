@@ -27,4 +27,7 @@
     font-size: 24px;
     font-weight: 500;
   }
+  .bg-opacity {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
