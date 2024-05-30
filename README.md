@@ -1,4 +1,4 @@
-# 카오스크 (가제)
+# 키오스크 (가제)
 - language: Typescript
 - framework: Next.js
 - node: 20.12.1
