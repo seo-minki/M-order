@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { AnimatePresence } from 'framer-motion';
 
 import Title from "@/components/payment/Title";
 import ShareButton from "@/components/payment/ShareButton";
@@ -16,10 +17,12 @@ const Payment = () => {
   const queryParams = useSearchParams();
   const ledgerShortUrl: LedgerShortUrl = usePathname().replace(/\//g, '');
 
+  const price: number = 50000;
+
   const [payRequest, setPayRequest] = useState<boolean>(false);
 
-  const payment = () => {
-    setPayRequest(true);
+  const togglePaymentWidget = ():void => {
+    setPayRequest(!payRequest);
   }
 
   return (
@@ -33,7 +36,7 @@ const Payment = () => {
           title="청구내역"
           companyName="회사이름"
           reason="커피값 2월달"
-          amount={50000}
+          amount={price}
           companyLogo=""
           messageTitle="안내메세지"
           message="안녕"
@@ -44,10 +47,13 @@ const Payment = () => {
         <ButtonComponent
           buttonText="결제하기"
           classNames="block rounded-xl bg-black font-bold text-center text-[#00ff9a] h-[72px] w-full mt-7"
-          handleClick={payment}
+          handleClick={togglePaymentWidget}
         ></ButtonComponent>
 
-      {payRequest && <PaymentWidget/>}
+        <AnimatePresence>
+          { payRequest && <PaymentWidget price={price} payRequest={payRequest} handleWidget={togglePaymentWidget}/>}
+        </AnimatePresence>
+
       </div>
     </div>
   );
