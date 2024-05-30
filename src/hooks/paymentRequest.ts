@@ -1,4 +1,4 @@
-import { loadPaymentWidget, ANONYMOUS } from '@tosspayments/payment-widget-sdk'
+import { loadPaymentWidget } from '@tosspayments/payment-widget-sdk'
 
 
 export async function fetchPaymentWidget() {
@@ -8,23 +8,14 @@ export async function fetchPaymentWidget() {
   return paymentWidget;
 }
 
-export function renderPaymentWidget(widget: any, price: string, ref: any) {
+export function renderPaymentWidget(widget: any, price: number, ref: any) {
   const paymentMethodsWidget = widget.renderPaymentMethods(
     "#payment-widget",
     { value: price },
-    { variantKey: "DEFAULT" }
-  );
-
-  widget.renderAgreement(
-    "#agreement", 
-    { variantKey: "AGREEMENT" }
   );
 
   ref.current = paymentMethodsWidget;
 
-  // return {
-  //   widget, ref
-  // };
 }
 
 export async function handlePaymentRequest(widget: any) {
