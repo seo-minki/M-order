@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { AnimatePresence } from 'framer-motion';
 
 import Title from "@/components/payment/Title";
@@ -10,15 +9,9 @@ import PayTypes from "@/containers/PayTypes";
 import ButtonComponent from "@/components/ButtonComponent";
 import PaymentWidget from "@/components/payment/PaymentWidget";
 
-type LedgerShortUrl = string;
-
 const Payment = () => {
-  const router = useRouter();
-  const queryParams = useSearchParams();
-  const ledgerShortUrl: LedgerShortUrl = usePathname().replace(/\//g, '');
 
   const price: number = 50000;
-
   const [payRequest, setPayRequest] = useState<boolean>(false);
 
   const togglePaymentWidget = ():void => {

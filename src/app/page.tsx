@@ -1,4 +1,4 @@
-import Payment from "@/app/(routes)/[payment]/page";
+import Payment from "@/app/(routes)/payment/page";
 
 export default function Home() {
   return (
