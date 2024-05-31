@@ -26,12 +26,12 @@ const PaymentWidget = (({ price, payRequest, handleWidget }: PaymentWidgetProps)
     }, [payRequest]);
 
     useEffect(() => {
-      if (paymentWidget === null) {
+      if (paymentWidget === null && !price) {
         return;
       }
 
       renderPaymentWidget(paymentWidget, price, paymentMethodsWidgetRef)
-    }, [paymentWidget]);
+    }, [paymentWidget, price]);
 
     return (
       <div className="fixed px-5 left-0 top-0 w-full h-full bg-opacity ">
@@ -40,7 +40,7 @@ const PaymentWidget = (({ price, payRequest, handleWidget }: PaymentWidgetProps)
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
           exit={{ y: "100%" }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.5 }}
         >
           <section className="w-[640px] rounded-xl overflow-hidden">
             <div id="payment-widget" />
