@@ -26,10 +26,10 @@ const PaymentWidget = (({ price, payRequest, handleWidget }: PaymentWidgetProps)
     }, [payRequest]);
 
     useEffect(() => {
-      if (paymentWidget === null && !price) {
+      if (!paymentWidget || !price) {
         return;
       }
-
+      
       renderPaymentWidget(paymentWidget, price, paymentMethodsWidgetRef)
     }, [paymentWidget, price]);
 
