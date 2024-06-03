@@ -1,0 +1,44 @@
+[
+  {
+    "categoryType": "coffe",
+    "categoryName": "커피",
+    "productList": [
+      {
+        "id": 1,
+        "productName": "아메리카노",
+        "price": 3000
+      },
+      {
+        "id": 2,
+        "productName": "카페라떼",
+        "price": 4000
+      },
+      {
+        "id": 3,
+        "productName": "바닐라 라떼",
+        "price": 4500
+      }
+    ]
+  },
+  {
+    "categoryType": "ade",
+    "categoryName": "에이드",
+    "productList": [
+      {
+        "id": 1,
+        "productName": "레몬에이드",
+        "price": 5000
+      },
+      {
+        "id": 2,
+        "productName": "자몽에이드",
+        "price": 5000
+      },
+      {
+        "id": 3,
+        "productName": "오렌지에이드",
+        "price": 5000
+      }
+    ]
+  }
+]
