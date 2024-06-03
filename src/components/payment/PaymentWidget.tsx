@@ -46,7 +46,7 @@ const PaymentWidget = (({ price, payRequest, handleWidget }: PaymentWidgetProps)
             <div id="payment-widget" />
             <button
               onClick={() => handlePaymentRequest(paymentWidget)}
-              className="w-full bg-[#3282f6] p-4 text-white"
+              className="w-full bg-blue p-4 text-white"
             >
               결제하기
             </button>
