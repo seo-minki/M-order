@@ -1,0 +1,12 @@
+.up-down {
+  animation: up-down 1s infinite ease-in-out alternate;
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-30px);
+  }
+}
