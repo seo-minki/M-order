@@ -16,7 +16,7 @@ const Home = () => {
   const router = useRouter();
 
   const handleStart = (): void => {
-    router.push("/menu");
+    router.push("/menu", {scroll: false});
   };
 
   return (
