@@ -20,15 +20,17 @@ const Home = () => {
   };
 
   return (
-    <div className="h-full w-full fixed py-8 flex items-center flex-col justify-between overflow-auto">
-      <section>
+    <div className="h-full w-full fixed py-8 flex items-center flex-col justify-between overflow-auto home"
+      onClick={handleStart}
+    >
+      <section className="relative">
         <Image src={CoffeeLogo} alt="커피로고" width={200} priority={true} style={{ width: 200, height: 'auto' }} />
         <h1 className={`text-xl mt-6 ${eduQLDBeginner.className}`}>Welcome to Coffee Bar</h1>
       </section>
       
       <ButtonComponent
-        classNames="w-9/12 h-[60px] rounded-xl text-[18px] text-white bg-brown"
-        buttonText="ORDER"
+        classNames="text-xl relative font-black up-down"
+        buttonText="터치를 하여 주문을 시작해 주세요"
         handleClick={handleStart}
       />
     </div>

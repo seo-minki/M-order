@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.className} bg-beige`}>{children}</body>
+      <body className={`${pretendard.className}`}>{children}</body>
     </html>
   );
 }
