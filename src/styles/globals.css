@@ -36,7 +36,7 @@
 
 @layer components {
   .home {
-    background: url("../../public/images/home-image.jpg") no-repeat center center;
+    background: url("/images/home-image.jpg") no-repeat center center;
     background-size: cover;
     position: relative;
   }
