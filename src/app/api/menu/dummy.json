@@ -1,43 +1,73 @@
 [
   {
-    "categoryType": "coffe",
+    "categoryId": "coffee",
     "categoryName": "커피",
     "productList": [
       {
         "id": 1,
         "productName": "아메리카노",
-        "price": 3000
+        "price": 3000,
+        "image": "/images/menu/아메이카노.png"
       },
       {
         "id": 2,
         "productName": "카페라떼",
-        "price": 4000
+        "price": 4000,
+        "image": "/images/menu/카페라떼.png"
       },
       {
         "id": 3,
         "productName": "바닐라 라떼",
-        "price": 4500
+        "price": 4500,
+        "image": "/images/menu/바닐라라떼.png"
       }
     ]
   },
   {
-    "categoryType": "ade",
+    "categoryId": "ade",
     "categoryName": "에이드",
     "productList": [
       {
         "id": 1,
         "productName": "레몬에이드",
-        "price": 5000
+        "price": 5000,
+        "image": "/images/menu/레몬에이드.png"
       },
       {
         "id": 2,
         "productName": "자몽에이드",
-        "price": 5000
+        "price": 5000,
+        "image": "/images/menu/자몽에이드.png"
       },
       {
         "id": 3,
         "productName": "오렌지에이드",
-        "price": 5000
+        "price": 5000,
+        "image": "/images/menu/오렌지에이드.png"
+      }
+    ]
+  },
+  {
+    "categoryId": "tea",
+    "categoryName": "티",
+    "productList": [
+      {
+        "id": 1,
+        "productName": "페퍼민트",
+        "price": 5000,
+        "image": "/images/menu/페퍼민트.png"
+      },
+      {
+        "id": 2,
+        "productName": "우롱티",
+        "price": 5000,
+        "image": "/images/menu/우롱티.png"
+      },
+      {
+        "id": 3,
+        "productName": "개모마일",
+        "price": 5000,
+        "image": "/images/menu/캐모마일.png"
       }
     ]
   }
