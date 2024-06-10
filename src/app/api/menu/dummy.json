@@ -20,6 +20,30 @@
         "productName": "바닐라 라떼",
         "price": 4500,
         "image": "/images/menu/바닐라라떼.png"
+      },
+      {
+        "id": 4,
+        "productName": "카라멜 마끼아또",
+        "price": 4500,
+        "image": "/images/menu/카라멜마끼아또.png"
+      }
+    ]
+  },
+  {
+    "categoryId": "smoothie",
+    "categoryName": "스무디",
+    "productList": [
+      {
+        "id": 1,
+        "productName": "깔라만시 스무디",
+        "price": 6000,
+        "image": "/images/menu/깔라만시스무디.png"
+      },
+      {
+        "id": 2,
+        "productName": "망고 스무디",
+        "price": 5500,
+        "image": "/images/menu/망고스무디.png"
       }
     ]
   },
@@ -65,10 +89,25 @@
       },
       {
         "id": 3,
-        "productName": "개모마일",
+        "productName": "캐모마일",
         "price": 5000,
         "image": "/images/menu/캐모마일.png"
       }
     ]
+  },
+  {
+    "categoryId": "bread",
+    "categoryName": "빵",
+    "productList": []
+  },
+  {
+    "categoryId": "cookie",
+    "categoryName": "쿠키",
+    "productList": []
+  },
+  {
+    "categoryId": "iceCream",
+    "categoryName": "아이스크림",
+    "productList": []
   }
 ]
