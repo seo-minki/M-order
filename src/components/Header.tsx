@@ -13,7 +13,7 @@ const Header = () => {
     router.push(path, {scroll: false});
   }
   return (
-    <header className="fixed left-0 top-0 w-full h-[72px] flex items-center justify-between px-4 bg-white">
+    <header className="fixed left-0 top-0 w-full h-[72px] flex items-center justify-between px-4 bg-white z-10">
       <Image src={HomeIcon} alt="로고" width={32} height={32} priority={true} style={{ width: 32, height: 32 }} onClick={() => handleClick("/")} />
       <Image src={CartIcon} alt="로고" width={32} height={32} priority={true} style={{ width: 32, height: 32 }} onClick={() => handleClick("/cart")} />
     </header>
