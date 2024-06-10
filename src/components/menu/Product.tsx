@@ -4,12 +4,13 @@ import Image from "next/image";
 
 const Product = ( product: ProductOptions ) => {
   return (
-    <div className="w-1/4 cursor-pointer">
+    <div className="w-1/4 cursor-pointer max-md:w-1/3">
       <Image
         src={product.image}
-        width={100}
-        height={100}
+        width={256}
+        height={335}
         className="w-full"
+        priority={true}
         alt="상품 이미지"
       />
       <p className="text-center text-lg">{product.productName}</p>
