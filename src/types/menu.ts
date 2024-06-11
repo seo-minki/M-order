@@ -5,7 +5,7 @@ export interface CategoryOptions {
 }
 
 export interface ProductOptions {
-  id: number,
+  id: string,
   productName: string,
   price: number,
   image: string

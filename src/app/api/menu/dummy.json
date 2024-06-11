@@ -4,26 +4,26 @@
     "categoryName": "커피",
     "productList": [
       {
-        "id": 1,
+        "id": "coffee_1",
         "productName": "아메리카노",
         "price": 3000,
         "image": "/images/menu/아메리카노.png"
       },
       {
-        "id": 2,
+        "id": "coffee_2",
         "productName": "카페라떼",
         "price": 4000,
         "image": "/images/menu/카페라떼.png"
       },
       {
-        "id": 3,
+        "id": "coffee_3",
         "productName": "바닐라 라떼",
         "price": 4500,
         "image": "/images/menu/바닐라라떼.png"
       },
       {
-        "id": 4,
-        "productName": "카라멜 마끼아또",
+        "id": "coffee_4",
+        "productName": "caramelMacchiato",
         "price": 4500,
         "image": "/images/menu/카라멜마끼아또.png"
       }
@@ -34,13 +34,13 @@
     "categoryName": "스무디",
     "productList": [
       {
-        "id": 1,
+        "id": "smoothie_1",
         "productName": "깔라만시 스무디",
         "price": 6000,
         "image": "/images/menu/깔라만시스무디.png"
       },
       {
-        "id": 2,
+        "id": "smoothie_2",
         "productName": "망고 스무디",
         "price": 5500,
         "image": "/images/menu/망고스무디.png"
@@ -52,19 +52,19 @@
     "categoryName": "에이드",
     "productList": [
       {
-        "id": 1,
+        "id": "ade_1",
         "productName": "레몬에이드",
         "price": 5000,
         "image": "/images/menu/레몬에이드.png"
       },
       {
-        "id": 2,
+        "id": "ade_2",
         "productName": "자몽에이드",
         "price": 5000,
         "image": "/images/menu/자몽에이드.png"
       },
       {
-        "id": 3,
+        "id": "ade_3",
         "productName": "오렌지에이드",
         "price": 5000,
         "image": "/images/menu/오렌지에이드.png"
@@ -76,19 +76,19 @@
     "categoryName": "티",
     "productList": [
       {
-        "id": 1,
+        "id": "tea_1",
         "productName": "페퍼민트",
         "price": 5000,
         "image": "/images/menu/페퍼민트.png"
       },
       {
-        "id": 2,
+        "id": "tea_2",
         "productName": "우롱티",
         "price": 5000,
         "image": "/images/menu/우롱티.png"
       },
       {
-        "id": 3,
+        "id": "tea_3",
         "productName": "캐모마일",
         "price": 5000,
         "image": "/images/menu/캐모마일.png"
