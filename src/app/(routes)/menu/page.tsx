@@ -65,10 +65,10 @@ const Menu = () => {
         ></ProductList>
       </section>
 
-      <div className="fixed bottom-[20px] left-0 w-full px-4">
+      <div className="fixed bottom-4 left-0 w-full px-4">
         <ButtonComponent 
             buttonText="주문하기"
-            classNames="block rounded-xl bg-blue font-bold text-center text-xl text-white h-[72px] w-full"
+            classNames="block rounded-xl bg-blue font-bold text-center text-xl text-white h-[72px] w-full max-w-5xl mx-auto"
             handleClick={goPaymentPage}
           ></ButtonComponent>
       </div>
