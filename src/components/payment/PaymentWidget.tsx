@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { fetchPaymentWidget, renderPaymentWidget, handlePaymentRequest } from "@/hooks/paymentRequest";
 import { motion } from 'framer-motion';
+import { SlideUp } from "@/utils/animation";
 
 interface PaymentWidgetProps {
   price: number;
@@ -34,13 +35,13 @@ const PaymentWidget = (({ price, payRequest, handleWidget }: PaymentWidgetProps)
     }, [paymentWidget, price]);
 
     return (
-      <div className="fixed px-5 left-0 top-0 w-full h-full bg-opacity ">
+      <div className="fixed px-5 left-0 top-0 w-full h-full">
         <motion.div className="px-5 w-full h-full flex items-center justify-center"
           onClick={handleWidget}
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          exit={{ y: "100%" }}
-          transition={{ duration: 0.5 }}
+          initial={SlideUp.initial}
+          animate={SlideUp.animate}
+          exit={SlideUp.exit}
+          transition={SlideUp.transition}
         >
           <section className="w-[640px] rounded-xl overflow-hidden">
             <div id="payment-widget" />
