@@ -2,9 +2,15 @@ import { ProductOptions } from "@/types/menu";
 import { comma } from "@/utils/helper";
 import Image from "next/image";
 
-const Product = ( product: ProductOptions ) => {
+interface PropsProductOptions extends ProductOptions {
+  toggleProductDetail: (info: object) => void
+}
+
+const Product = ( product: PropsProductOptions ) => {
   return (
-    <div className="w-1/4 cursor-pointer max-md:w-1/3">
+    <div className="w-1/4 cursor-pointer max-md:w-1/3"
+    onClick={() => product.toggleProductDetail(product)}
+    >
       <Image
         src={product.image}
         width={256}

@@ -1,20 +1,18 @@
 import { ProductOptions } from "@/types/menu";
 import Product from "./Product";
 import { motion } from "framer-motion";
+import { SlideLeftAndOpacity } from "@/utils/animation";
 import { useEffect, useState } from "react";
+import ProductDetail from "../product/ProductDetail";
 
 interface PropsProductList {
   list: Array<ProductOptions>;
 }
 
-const animationSettings = {
-  initial: { opacity: 0, x: 40 },
-  animate: { opacity: 1, x: 0 },
-  transition: { duration: 0.4 },
-};
-
 const ProductList = ({ list }: PropsProductList) => {
   const [currentList, setCurrentList] = useState<Array<ProductOptions>>([]);
+  const [productDetailInfo, setProductDetailInfo] =
+    useState<ProductOptions | null>(null);
 
   useEffect(() => {
     const isChanged = list.some(
@@ -31,9 +29,9 @@ const ProductList = ({ list }: PropsProductList) => {
       {currentList.length > 0 ? (
         <motion.div
           className="flex flex-wrap items-center"
-          initial={animationSettings.initial}
-          animate={animationSettings.animate}
-          transition={animationSettings.transition}
+          initial={SlideLeftAndOpacity.initial}
+          animate={SlideLeftAndOpacity.animate}
+          transition={SlideLeftAndOpacity.transition}
           key={currentList.map((item) => item.id).join("-")}
         >
           {currentList.map((info) => (
@@ -43,6 +41,7 @@ const ProductList = ({ list }: PropsProductList) => {
               productName={info.productName}
               price={info.price}
               image={info.image}
+              toggleProductDetail={() => setProductDetailInfo(info)}
             ></Product>
           ))}
         </motion.div>
@@ -50,6 +49,16 @@ const ProductList = ({ list }: PropsProductList) => {
         <p className="h-24 text-[#555555] text-center py-20">
           상품 준비중입니다.
         </p>
+      )}
+
+      {productDetailInfo && (
+        <ProductDetail
+          image={productDetailInfo.image}
+          productName={productDetailInfo.productName}
+          price={productDetailInfo.price}
+          id={productDetailInfo.id}
+          toggleProductDetail={() => setProductDetailInfo(null)}
+        />
       )}
     </div>
   );
