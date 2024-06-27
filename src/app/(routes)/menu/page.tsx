@@ -57,11 +57,12 @@ const Menu = () => {
   }, [categoryId]);
 
   // 주문 목록이 변경될때만 재렌더링 하기 위한 메모이제이션 처리
-  const orderCount = useMemo((): number => {
-    return orderList.reduce((arr, cur) => arr + cur.quantity, 0);
-  }, [orderList]);
-
   const OrderCountChip = useMemo(() => {
+    const countOrders = (): number => {
+      return orderList.reduce((acc, item) => acc + item.quantity, 0);
+    };
+
+    const orderCount = countOrders();
     return () => (
       <>
         {orderCount > 0 && (
@@ -71,7 +72,7 @@ const Menu = () => {
         )}
       </>
     );
-  }, [orderCount]);
+  }, [orderList]);
 
   return (
     <div className="px-4 min-h-screen">
