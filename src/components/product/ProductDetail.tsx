@@ -71,7 +71,7 @@ const ProductDetail = (product: PropsProductOptions) => {
             height={335}
             priority={true}
             alt="상품 이미지"
-            className="mx-auto"
+            className="mx-auto h-auto w-auto"
           />
           <p className="text-center mb-2 mx-2 text-2xl font-bold">
             {product.productName}

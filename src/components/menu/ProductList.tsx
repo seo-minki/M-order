@@ -1,6 +1,6 @@
 import { ProductOptions } from "@/types/menu";
 import Product from "./Product";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { SlideLeftAndOpacity } from "@/utils/animation";
 import { useEffect, useState } from "react";
 import ProductDetail from "../product/ProductDetail";
@@ -15,14 +15,17 @@ const ProductList = ({ list }: PropsProductList) => {
     useState<ProductOptions | null>(null);
 
   useEffect(() => {
-    const isChanged = list.some(
-      (item, index) => item.id !== currentList[index]?.id
-    );
-
-    if (isChanged || list.length === 0) {
+    if (
+      list.length !== currentList.length ||
+      list.some((item, index) => item.id !== currentList[index]?.id)
+    ) {
       setCurrentList(list);
     }
-  }, [list]);
+  }, [list, currentList]);
+
+  const handleToggleProductDetail = (info: ProductOptions | null) => {
+    setProductDetailInfo(info);
+  };
 
   return (
     <div className="mt-2">
@@ -41,7 +44,7 @@ const ProductList = ({ list }: PropsProductList) => {
               productName={info.productName}
               price={info.price}
               image={info.image}
-              toggleProductDetail={() => setProductDetailInfo(info)}
+              toggleProductDetail={() => handleToggleProductDetail(info)}
             ></Product>
           ))}
         </motion.div>
@@ -51,15 +54,17 @@ const ProductList = ({ list }: PropsProductList) => {
         </p>
       )}
 
-      {productDetailInfo && (
-        <ProductDetail
-          image={productDetailInfo.image}
-          productName={productDetailInfo.productName}
-          price={productDetailInfo.price}
-          id={productDetailInfo.id}
-          toggleProductDetail={() => setProductDetailInfo(null)}
-        />
-      )}
+      <AnimatePresence>
+        {productDetailInfo && (
+          <ProductDetail
+            image={productDetailInfo.image}
+            productName={productDetailInfo.productName}
+            price={productDetailInfo.price}
+            id={productDetailInfo.id}
+            toggleProductDetail={() => handleToggleProductDetail(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
