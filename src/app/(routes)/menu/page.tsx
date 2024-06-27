@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import useCustomRouter from "@/utils/router";
 import { fetchMenu } from "@/utils/api";
 import { CategoryOptions, ProductOptions } from "@/types/menu";
+import { useRecoilValue } from "recoil";
+import { OrderListState } from "@/store/orderListAtom";
 
 import Header from "@/components/Header";
 import CategoryNavigation from "@/components/menu/CategoryNavigation";
@@ -14,6 +16,7 @@ const Menu = () => {
   const [menu, setMenu] = useState<Array<CategoryOptions>>([]);
   const [categoryId, setCategoryId] = useState<string>("");
   const [productList, setProductList] = useState<Array<ProductOptions>>([]);
+  const orderList = useRecoilValue(OrderListState);
   const { navigate } = useCustomRouter();
 
   const goCartPage = (): void => {
@@ -53,6 +56,23 @@ const Menu = () => {
     handleProductList();
   }, [categoryId]);
 
+  // 주문 목록이 변경될때만 재렌더링 하기 위한 메모이제이션 처리
+  const orderCount = useMemo((): number => {
+    return orderList.reduce((arr, cur) => arr + cur.quantity, 0);
+  }, [orderList]);
+
+  const OrderCountChip = useMemo(() => {
+    return () => (
+      <>
+        {orderCount > 0 && (
+          <div className="absolute right-0 top-[-16px] w-8 h-8 text-center rounded-full bg-gray-300 text-white leading-[32px] count-chip">
+            {orderCount}
+          </div>
+        )}
+      </>
+    );
+  }, [orderCount]);
+
   return (
     <div className="px-4 min-h-screen">
       <Header></Header>
@@ -68,9 +88,11 @@ const Menu = () => {
       <div className="fixed bottom-4 left-0 w-full px-4">
         <ButtonComponent
           buttonText="주문하기"
-          classNames="block rounded-xl bg-blue font-bold text-center text-xl text-white h-[72px] w-full max-w-5xl mx-auto"
+          classNames="block rounded-xl bg-blue font-bold text-center text-xl text-white h-[72px] w-full max-w-5xl mx-auto relative"
           handleClick={goCartPage}
-        ></ButtonComponent>
+        >
+          <OrderCountChip></OrderCountChip>
+        </ButtonComponent>
       </div>
     </div>
   );
