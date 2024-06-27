@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local"
+import RecoilContext from "./RecoilContext";
+import localFont from "next/font/local";
 import "@/styles/globals.css";
 
 const pretendard = localFont({
@@ -20,8 +21,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  userScalable: false
-}
+  userScalable: false,
+};
 
 export default function RootLayout({
   children,
@@ -30,7 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.className}`}>{children}</body>
+      <body className={`${pretendard.className}`}>
+        <RecoilContext>{children}</RecoilContext>
+      </body>
     </html>
   );
 }
