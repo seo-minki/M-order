@@ -1,16 +1,16 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import useCustomRouter from "@/utils/router";
 import Image from "next/image";
 import HomeIcon from "public/images/icons/home.png";
 import CartIcon from "public/images/icons/cart.png";
 import ButtonComponent from "./ButtonComponent";
 
 const Header = () => {
-  const router = useRouter();
+  const { navigate } = useCustomRouter();
 
   const handleClick = (path: string) => {
-    router.push(path, { scroll: false });
+    navigate(path);
   };
   return (
     <header className="fixed left-0 top-0 w-full h-[72px] flex items-center justify-between px-4 bg-white z-10">
