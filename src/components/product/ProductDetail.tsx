@@ -25,13 +25,13 @@ const ProductDetail = (product: PropsProductOptions) => {
   return (
     <div className="w-full h-full fixed left-0 bottom-0 z-10 bg-opacity pt-[3%]">
       <motion.div
-        className="rounded-t-3xl bg-red px-4 pt-4 h-full bg-white"
+        className="rounded-t-3xl bg-red px-4 pt-4 h-full bg-white overflow-auto"
         initial={SlideUp.initial}
         animate={SlideUp.animate}
         exit={SlideUp.exit}
         transition={SlideUp.transition}
       >
-        <section className="h-full max-w-5xl mx-auto relative">
+        <section className="h-full min-h-[640px] max-w-5xl mx-auto relative">
           <ButtonComponent
             classNames="bg-slate-200 w-9 h-9 rounded-full absolute right-0 top-0"
             buttonText="X"
