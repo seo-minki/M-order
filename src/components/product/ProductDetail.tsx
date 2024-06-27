@@ -1,11 +1,14 @@
 "use client";
 
+import { useRecoilState } from "recoil";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ProductOptions } from "@/types/menu";
 import { SlideUp } from "@/utils/animation";
 import Image from "next/image";
+import CloseIcon from "public/images/icons/close.png";
 import ButtonComponent from "../ButtonComponent";
+import { OrderListState } from "@/store/orderListAtom";
 
 interface PropsProductOptions extends ProductOptions {
   toggleProductDetail: () => void;
@@ -13,6 +16,7 @@ interface PropsProductOptions extends ProductOptions {
 
 const ProductDetail = (product: PropsProductOptions) => {
   const [quantity, setQuantity] = useState<number>(1);
+  const [orderList, setOrderList] = useRecoilState(OrderListState);
 
   const handleQuantity = (type: string): void => {
     if (type === "plus") {
@@ -20,6 +24,18 @@ const ProductDetail = (product: PropsProductOptions) => {
     } else if (type === "minus" && quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
+  };
+
+  const handleAddOrder = (): void => {
+    const orderOption = {
+      ...product,
+      quantity: quantity,
+    };
+
+    const newOrder = [...orderList, orderOption];
+
+    setOrderList(newOrder);
+    product.toggleProductDetail();
   };
 
   return (
@@ -33,10 +49,22 @@ const ProductDetail = (product: PropsProductOptions) => {
       >
         <section className="h-full min-h-[640px] max-w-5xl mx-auto relative">
           <ButtonComponent
-            classNames="bg-slate-200 w-9 h-9 rounded-full absolute right-0 top-0"
-            buttonText="X"
-            handleClick={() => product.toggleProductDetail()}
-          />
+            classNames="bg-gray-300 w-9 h-9 flex items-center justify-center rounded-full absolute right-0 top-0"
+            buttonText=""
+            handleClick={() => {
+              product.toggleProductDetail();
+            }}
+          >
+            <Image
+              src={CloseIcon}
+              alt="로고"
+              width={16}
+              height={16}
+              priority={true}
+              className="w-4"
+            />
+          </ButtonComponent>
+
           <Image
             src={product.image}
             width={300}
@@ -67,7 +95,7 @@ const ProductDetail = (product: PropsProductOptions) => {
           <ButtonComponent
             classNames="absolute bottom-4 left-0 block rounded-xl bg-blue font-bold text-center text-xl text-white h-[72px] w-full"
             buttonText="추가하기"
-            handleClick={() => {}}
+            handleClick={handleAddOrder}
           ></ButtonComponent>
         </section>
       </motion.div>
