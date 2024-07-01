@@ -27,12 +27,15 @@ const ProductDetail = (product: PropsProductOptions) => {
   };
 
   const handleAddOrder = (): void => {
+    const findItem = orderList.find((item) => item.id === product.id)?.quantity;
+
     const orderOption = {
       ...product,
-      quantity: quantity,
+      quantity: (findItem || 0) + quantity,
     };
 
-    const newOrder = [...orderList, orderOption];
+    const filterItem = orderList.filter((item) => item.id !== product.id);
+    const newOrder = [...filterItem, orderOption];
 
     setOrderList(newOrder);
     product.toggleProductDetail();
