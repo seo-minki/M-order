@@ -1,48 +1,40 @@
 "use client";
 
 import useCustomRouter from "@/utils/router";
-import Image from "next/image";
-import HomeIcon from "public/images/icons/home.png";
-import CartIcon from "public/images/icons/cart.png";
+import Image, { StaticImageData } from "next/image";
 import ButtonComponent from "./ButtonComponent";
 
-const Header = () => {
+interface NavigateOptions {
+  imagePath: StaticImageData;
+  routePath: string;
+}
+
+interface NavigateListOptions {
+  navigateList: Array<NavigateOptions>;
+}
+
+const Header = ({ navigateList }: NavigateListOptions) => {
   const { navigate } = useCustomRouter();
 
-  const handleClick = (path: string) => {
-    navigate(path);
-  };
   return (
     <header className="fixed left-0 top-0 w-full h-[72px] flex items-center justify-between px-4 bg-white z-10">
-      <ButtonComponent
-        classNames="w-[32px] h-[32px]"
-        buttonText=""
-        handleClick={() => handleClick("/")}
-      >
-        <Image
-          src={HomeIcon}
-          alt="로고"
-          width={32}
-          height={32}
-          priority={true}
-          className="w-full"
-        />
-      </ButtonComponent>
-
-      <ButtonComponent
-        classNames="w-[32px] h-[32px]"
-        buttonText=""
-        handleClick={() => handleClick("/cart")}
-      >
-        <Image
-          src={CartIcon}
-          alt="로고"
-          width={32}
-          height={32}
-          priority={true}
-          className="w-full"
-        />
-      </ButtonComponent>
+      {navigateList.map((item) => (
+        <ButtonComponent
+          classNames="w-[32px] h-[32px]"
+          buttonText=""
+          handleClick={() => navigate(item.routePath)}
+          key={item.routePath}
+        >
+          <Image
+            src={item.imagePath}
+            alt="아이콘"
+            width={32}
+            height={32}
+            priority={true}
+            className="w-full"
+          />
+        </ButtonComponent>
+      ))}
     </header>
   );
 };

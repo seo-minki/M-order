@@ -8,6 +8,9 @@ import { useRecoilValue } from "recoil";
 import { OrderListState } from "@/store/orderListAtom";
 
 import Header from "@/components/Header";
+import HomeIcon from "public/images/icons/home.png";
+import CartIcon from "public/images/icons/cart.png";
+
 import CategoryNavigation from "@/components/menu/CategoryNavigation";
 import ProductList from "@/components/menu/ProductList";
 import ButtonComponent from "@/components/ButtonComponent";
@@ -19,9 +22,17 @@ const Menu = () => {
   const orderList = useRecoilValue(OrderListState);
   const { navigate } = useCustomRouter();
 
-  const goCartPage = (): void => {
-    navigate("/cart");
-  };
+  // 헤더 네비게이션 정보
+  const navigateList = [
+    {
+      imagePath: HomeIcon,
+      routePath: "/",
+    },
+    {
+      imagePath: CartIcon,
+      routePath: "/cart",
+    },
+  ];
 
   async function getMenu() {
     const data = await fetchMenu();
@@ -76,7 +87,7 @@ const Menu = () => {
 
   return (
     <div className="px-4 min-h-screen">
-      <Header></Header>
+      <Header navigateList={navigateList}></Header>
       <section className="relative pt-[72px] pb-[144px] max-w-5xl mx-auto">
         <CategoryNavigation
           categoryList={menu}
@@ -90,7 +101,7 @@ const Menu = () => {
         <ButtonComponent
           buttonText="주문하기"
           classNames="block rounded-xl bg-blue font-bold text-center text-xl text-white h-[72px] w-full max-w-5xl mx-auto relative"
-          handleClick={goCartPage}
+          handleClick={() => navigate("/cart")}
         >
           <OrderCountChip></OrderCountChip>
         </ButtonComponent>
