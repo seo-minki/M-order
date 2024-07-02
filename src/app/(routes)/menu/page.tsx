@@ -41,11 +41,12 @@ const Menu = () => {
 
   const handleCategoryType = (id: string) => {
     setCategoryId(id);
+    handleProductList(id);
   };
 
-  const handleProductList = () => {
+  const handleProductList = (id: string) => {
     const list = menu.find(
-      (data: { categoryId: string }) => data.categoryId === categoryId
+      (data: { categoryId: string }) => data.categoryId === id
     );
 
     if (list) {
@@ -58,31 +59,29 @@ const Menu = () => {
   }, []);
 
   useEffect(() => {
-    if (menu.length > 0) {
-      handleCategoryType(menu[0].categoryId);
-    }
+    handleCategoryType(menu[0]?.categoryId);
   }, [menu]);
-
-  useEffect(() => {
-    handleProductList();
-  }, [categoryId]);
 
   // 주문 목록이 변경될때만 재렌더링 하기 위한 메모이제이션 처리
   const OrderCountChip = useMemo(() => {
     const countOrders = (): number => {
       return orderList.reduce((acc, item) => acc + item.quantity, 0);
     };
-
     const orderCount = countOrders();
-    return () => (
-      <>
-        {orderCount > 0 && (
-          <div className="absolute right-0 top-[-16px] w-8 h-8 text-center rounded-full bg-gray-300 text-white leading-[32px] count-chip">
-            {orderCount}
-          </div>
-        )}
-      </>
-    );
+
+    const element = (): JSX.Element => {
+      return (
+        <>
+          {orderCount > 0 && (
+            <div className="absolute right-0 top-[-16px] w-8 h-8 text-center rounded-full bg-gray-300 text-white leading-[32px] count-chip">
+              {orderCount}
+            </div>
+          )}
+        </>
+      );
+    };
+
+    return element;
   }, [orderList]);
 
   return (

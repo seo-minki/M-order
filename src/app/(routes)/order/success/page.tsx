@@ -30,7 +30,7 @@ const Success = () => {
     }
 
     return () => clearInterval(interval);
-  }, [timer]);
+  }, []);
 
   const Timer = () => {
     return (
