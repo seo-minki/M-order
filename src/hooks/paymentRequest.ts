@@ -24,7 +24,7 @@ export function handlePaymentRequest(widget: any, productName: string) {
     customerName: "김토스",
     customerEmail: "seominki0108@gmail.com",
     customerMobilePhone: "01012341234",
-    successUrl: `${window.location.origin}/success`,
-    failUrl: `${window.location.origin}/fail`,
+    successUrl: `${window.location.origin}/order/success`,
+    failUrl: `${window.location.origin}/order/fail`,
   });
 }
