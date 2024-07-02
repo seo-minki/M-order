@@ -11,6 +11,7 @@
   "dependencies": {
     "@tosspayments/payment-widget-sdk": "^0.10.2",
     "framer-motion": "^11.2.6",
+    "lottie-web": "^5.12.2",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",
