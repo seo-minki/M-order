@@ -23,6 +23,7 @@
 
 ## 프로젝트 구조 :card_index_dividers:
 
+```
 📦src
 ┣ 📂app
 ┃ ┣ 📂(routes)
@@ -70,3 +71,4 @@
 ┃ ┣ 📜api.ts
 ┃ ┣ 📜helper.ts
 ┃ ┗ 📜router.ts
+```
