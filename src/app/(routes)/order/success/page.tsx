@@ -24,13 +24,13 @@ const Success = () => {
       setTimer((timer) => timer - 1);
     }, 1000);
 
-    if (timer <= 0) {
+    if (timer <= 1) {
       clearInterval(interval);
       goHomePage();
     }
 
     return () => clearInterval(interval);
-  }, []);
+  }, [timer]);
 
   const Timer = () => {
     return (
