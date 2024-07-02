@@ -22,6 +22,10 @@ const Menu = () => {
   const orderList = useRecoilValue(OrderListState);
   const { navigate } = useCustomRouter();
 
+  const orderCount = useMemo((): number => {
+    return orderList.reduce((acc, item) => acc + item.quantity, 0);
+  }, [orderList]);
+
   // 헤더 네비게이션 정보
   const navigateList = [
     {
@@ -64,11 +68,6 @@ const Menu = () => {
 
   // 주문 목록이 변경될때만 재렌더링 하기 위한 메모이제이션 처리
   const OrderCountChip = useMemo(() => {
-    const countOrders = (): number => {
-      return orderList.reduce((acc, item) => acc + item.quantity, 0);
-    };
-    const orderCount = countOrders();
-
     const element = (): JSX.Element => {
       return (
         <>
@@ -82,7 +81,7 @@ const Menu = () => {
     };
 
     return element;
-  }, [orderList]);
+  }, [orderCount]);
 
   return (
     <div className="px-4 min-h-screen">
@@ -101,6 +100,7 @@ const Menu = () => {
           buttonText="주문하기"
           classNames="block rounded-xl bg-blue font-bold text-center text-xl text-white h-[72px] w-full max-w-5xl mx-auto relative"
           handleClick={() => navigate("/cart")}
+          isDisabled={orderCount === 0}
         >
           <OrderCountChip></OrderCountChip>
         </ButtonComponent>

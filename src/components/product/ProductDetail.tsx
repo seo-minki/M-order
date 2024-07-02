@@ -86,12 +86,14 @@ const ProductDetail = (product: PropsProductOptions) => {
               classNames="bg-blue rounded-md w-9 h-9 text-white"
               buttonText="-"
               handleClick={() => handleQuantity("minus")}
+              isDisabled={quantity <= 1}
             />
             <span className="mx-2 min-w-[50px] text-center">{quantity}</span>
             <ButtonComponent
               classNames="bg-blue rounded-md w-9 h-9 text-white"
               buttonText="+"
               handleClick={() => handleQuantity("plus")}
+              isDisabled={quantity >= 10}
             />
           </div>
 
