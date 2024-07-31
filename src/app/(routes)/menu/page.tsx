@@ -16,9 +16,9 @@ import ProductList from "@/components/menu/ProductList";
 import ButtonComponent from "@/components/ButtonComponent";
 
 const Menu = () => {
-  const [menu, setMenu] = useState<Array<CategoryOptions>>([]);
+  const [menu, setMenu] = useState<CategoryOptions[]>([]);
   const [categoryId, setCategoryId] = useState<string>("");
-  const [productList, setProductList] = useState<Array<ProductOptions>>([]);
+  const [productList, setProductList] = useState<ProductOptions[]>([]);
   const orderList = useRecoilValue(OrderListState);
   const { navigate } = useCustomRouter();
 

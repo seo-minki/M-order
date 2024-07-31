@@ -10,7 +10,7 @@ interface PropsProductList {
 }
 
 const ProductList = ({ list }: PropsProductList) => {
-  const [currentList, setCurrentList] = useState<Array<ProductOptions>>([]);
+  const [currentList, setCurrentList] = useState<ProductOptions[]>([]);
   const [productDetailInfo, setProductDetailInfo] =
     useState<ProductOptions | null>(null);
 
