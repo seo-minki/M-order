@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import ProductDetail from "../product/ProductDetail";
 
 interface PropsProductList {
-  list: Array<ProductOptions>;
+  list: ProductOptions[];
 }
 
 const ProductList = ({ list }: PropsProductList) => {

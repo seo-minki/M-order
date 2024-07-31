@@ -3,13 +3,14 @@ import { comma } from "@/utils/helper";
 import Image from "next/image";
 
 interface PropsProductOptions extends ProductOptions {
-  toggleProductDetail: (info: object) => void
+  toggleProductDetail: (info: object) => void;
 }
 
-const Product = ( product: PropsProductOptions ) => {
+const Product = (product: PropsProductOptions) => {
   return (
-    <div className="w-1/4 cursor-pointer max-md:w-1/3"
-    onClick={() => product.toggleProductDetail(product)}
+    <div
+      className="w-1/4 cursor-pointer max-md:w-1/3"
+      onClick={() => product.toggleProductDetail(product)}
     >
       <Image
         src={product.image}
@@ -22,7 +23,7 @@ const Product = ( product: PropsProductOptions ) => {
       <p className="text-center text-lg">{product.productName}</p>
       <span className="block text-center">{comma(product.price)}원</span>
     </div>
-  )
-}
+  );
+};
 
 export default Product;

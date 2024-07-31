@@ -1,12 +1,12 @@
 export interface CategoryOptions {
-  categoryId: string,
-  categoryName: string
-  productList: Array<ProductOptions>
+  categoryId: string;
+  categoryName: string;
+  productList: ProductOptions[];
 }
 
 export interface ProductOptions {
-  id: string,
-  productName: string,
-  price: number,
-  image: string
+  id: string;
+  productName: string;
+  price: number;
+  image: string;
 }
