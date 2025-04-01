@@ -65,26 +65,19 @@ const Menu = () => {
   useEffect(() => {
     handleCategoryType(menu[0]?.categoryId);
   }, [menu]);
-
-  // 주문 목록이 변경될때만 재렌더링 하기 위한 메모이제이션 처리
-  const OrderCountChip = useMemo(() => {
-    const element = (): JSX.Element => {
-      return (
-        <>
-          {orderCount > 0 && (
-            <div className="absolute right-0 top-[-16px] w-8 h-8 text-center rounded-full bg-gray-300 text-white leading-[32px] count-chip">
-              {orderCount}
-            </div>
-          )}
-        </>
-      );
-    };
-
-    return element;
-  }, [orderCount]);
+  
+  const OrderCountChip = () => {
+    if (orderCount <= 0) return null;
+    
+    return (
+      <div className="absolute right-0 top-[-16px] w-8 h-8 text-center rounded-full bg-gray-300 text-white leading-[32px] count-chip">
+        {orderCount}
+      </div>
+    );
+  };
 
   return (
-    <div className="px-4 min-h-screen">
+    <div className="min-h-screen">
       <Header navigateList={navigateList}></Header>
       <section className="relative pt-[72px] pb-[144px] max-w-5xl mx-auto">
         <CategoryNavigation

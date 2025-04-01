@@ -14,7 +14,7 @@ const CategoryNavigation = ({
   handleCategory,
 }: Props) => {
   return (
-    <nav>
+    <nav className="sticky left-0 top-[72px] bg-white z-10">
       <ul className="flex items-center border-b border-slate-300 overflow-x-auto">
         {categoryList.map((category, index) => (
           <li

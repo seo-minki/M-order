@@ -6,7 +6,7 @@ interface ButtonProps {
   classNames: string;
   buttonText: string;
   isDisabled?: boolean;
-  handleClick: () => void;
+  handleClick?: () => void;
   children?: ReactNode;
 }
 
