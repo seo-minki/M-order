@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { PaymentWidgetInstance } from "@tosspayments/payment-widget-sdk";
+
 import {
   fetchPaymentWidget,
   renderPaymentWidget,
@@ -20,17 +22,21 @@ const PaymentWidget = ({
   handleWidget,
   productName,
 }: PaymentWidgetProps) => {
-  const [paymentWidget, setPaymentWidget] = useState<any>(null);
+  const [paymentWidget, setPaymentWidget] = useState<PaymentWidgetInstance | null>(null);
   const paymentMethodsWidgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const init = async () => {
-      const fetch = await fetchPaymentWidget();
-      setPaymentWidget(fetch);
+    const initializeWidget = async () => {
+      try {
+        const fetch = await fetchPaymentWidget();
+        setPaymentWidget(fetch);
+      } catch (e) {
+        console.error(e);
+      }
     };
 
     if (payRequest) {
-      init();
+      initializeWidget();
     }
   }, [payRequest]);
 
