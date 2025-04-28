@@ -1,8 +1,8 @@
 import { loadPaymentWidget } from "@tosspayments/payment-widget-sdk";
 
 export async function fetchPaymentWidget() {
-  const clientKey: string = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
-  const customerKey: string = "mZldYje7xPVYoSu1vA_jy";
+  const clientKey: string = process.env.NEXT_PUBLIC_TOSS_PAYMENT_CLIENT_KEY || '';
+  const customerKey: string = process.env.NEXT_PUBLIC_TOSS_PAYMENT_CUSTOMER_KEY || '';
   const paymentWidget = await loadPaymentWidget(clientKey, customerKey);
   return paymentWidget;
 }
