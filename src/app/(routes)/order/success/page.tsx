@@ -6,16 +6,16 @@ import animationData from "public/lottie/order-success.json";
 import ButtonComponent from "@/components/ButtonComponent";
 import useCustomRouter from "@/utils/router";
 import { useEffect, useState } from "react";
-import { OrderListState } from "@/store/orderListAtom";
-import { useResetRecoilState } from "recoil";
+import { OrderListAtom } from "@/store/orderListAtom";
+import { useAtom } from 'jotai';
 
 const Success = () => {
   const { navigate } = useCustomRouter();
   const [timer, setTimer] = useState<number>(10);
-  const resetOrderList = useResetRecoilState(OrderListState);
+  const [orderList, setOrderList] = useAtom(OrderListAtom);
 
   const goHomePage = (): void => {
-    resetOrderList();
+    setOrderList(() => []);
     navigate("/");
   };
 

@@ -4,8 +4,8 @@ import { useState, useEffect, useMemo } from "react";
 import useCustomRouter from "@/utils/router";
 import { fetchMenu } from "@/utils/api";
 import { CategoryOptions, ProductOptions } from "@/types/menu";
-import { useRecoilValue } from "recoil";
-import { OrderListState } from "@/store/orderListAtom";
+import { useAtom } from 'jotai';
+import { OrderListAtom } from "@/store/orderListAtom";
 
 import Header from "@/components/Header";
 import HomeIcon from "public/images/icons/home.png";
@@ -19,11 +19,11 @@ const Menu = () => {
   const [menu, setMenu] = useState<CategoryOptions[]>([]);
   const [categoryId, setCategoryId] = useState<string>("");
   const [productList, setProductList] = useState<ProductOptions[]>([]);
-  const orderList = useRecoilValue(OrderListState);
+  const [orderList] = useAtom(OrderListAtom);
   const { navigate } = useCustomRouter();
 
   const orderCount = useMemo((): number => {
-    return orderList.reduce((acc, item) => acc + item.quantity, 0);
+    return orderList.reduce((acc, item) => acc + item?.quantity, 0);
   }, [orderList]);
 
   // 헤더 네비게이션 정보

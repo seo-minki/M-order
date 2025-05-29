@@ -1,9 +1,9 @@
 "use client";
 
-import { useRecoilState } from "recoil";
 import { useEffect, useState, Fragment } from "react";
+import { useAtom } from 'jotai';
 import useCustomRouter from "@/utils/router";
-import { OrderListState } from "@/store/orderListAtom";
+import { OrderListAtom } from "@/store/orderListAtom";
 import { AnimatePresence } from "framer-motion";
 
 import ButtonComponent from "@/components/ButtonComponent";
@@ -14,14 +14,14 @@ import Image from "next/image";
 import { comma } from "@/utils/helper";
 
 const OrderList = () => {
-  const [newOrderlist, setNewOrderList] = useRecoilState(OrderListState);
-  const [totalPrice, setToalPrice] = useState<number>(0);
+  const [newOrderList, setNewOrderList] = useAtom(OrderListAtom);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
   const [orderName, setOrderName] = useState<string>("");
   const [payRequest, setPayRequest] = useState<boolean>(false);
   const { navigate } = useCustomRouter();
 
   const handleQuantity = (type: string, id: string): void => {
-    const updatedOrderList = newOrderlist.map((item) => {
+    const updatedOrderList = newOrderList.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -36,24 +36,24 @@ const OrderList = () => {
   };
 
   const removeItem = (id: string): void => {
-    const updateOrderList = [...newOrderlist].filter((item) => item.id !== id);
+    const updateOrderList = [...newOrderList].filter((item) => item.id !== id);
     setNewOrderList(updateOrderList);
   };
 
   useEffect(() => {
     // 총 갯수
-    const sum = newOrderlist.reduce(
+    const sum = newOrderList.reduce(
       (arr, cur) => arr + cur.price * cur.quantity,
       0
     );
-    setToalPrice(sum);
+    setTotalPrice(sum);
 
     // 상품 이름
-    const sumOrderListName = newOrderlist
+    const sumOrderListName = newOrderList
       .map((item) => item.productName, [])
       .join(",");
     setOrderName(sumOrderListName);
-  }, [newOrderlist]);
+  }, [newOrderList]);
 
   const togglePaymentWidget = (): void => {
     setPayRequest(!payRequest);
@@ -61,10 +61,10 @@ const OrderList = () => {
 
   return (
     <section className="max-w-5xl mx-auto py-[72px]">
-      {newOrderlist.length > 0 ? (
+      {newOrderList.length > 0 ? (
         <Fragment>
           <ul>
-            {newOrderlist.map((order) => (
+            {newOrderList.map((order) => (
               <li key={order.id} className="py-4 relative">
                 <ButtonComponent
                   classNames="w-9 h-9 flex items-center justify-center rounded-full bg-gray-300 absolute right-0 top-0"

@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import RecoilContext from "./RecoilContext";
 import localFont from "next/font/local";
 import "@/styles/globals.css";
 
@@ -32,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${pretendard.className}`}>
-        <RecoilContext>{children}</RecoilContext>
+        {children}
       </body>
     </html>
   );

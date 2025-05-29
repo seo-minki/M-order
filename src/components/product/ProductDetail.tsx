@@ -1,14 +1,14 @@
 "use client";
 
-import { useRecoilState } from "recoil";
 import { useState } from "react";
+import { useAtom } from 'jotai';
 import { motion } from "framer-motion";
 import { ProductOptions } from "@/types/menu";
 import { SlideUp } from "@/utils/animation";
 import Image from "next/image";
 import CloseIcon from "public/images/icons/close.png";
 import ButtonComponent from "../ButtonComponent";
-import { OrderListState } from "@/store/orderListAtom";
+import { OrderListAtom } from "@/store/orderListAtom";
 
 interface PropsProductOptions extends ProductOptions {
   toggleProductDetail: () => void;
@@ -16,7 +16,7 @@ interface PropsProductOptions extends ProductOptions {
 
 const ProductDetail = (product: PropsProductOptions) => {
   const [quantity, setQuantity] = useState<number>(1);
-  const [orderList, setOrderList] = useRecoilState(OrderListState);
+  const [orderList, setOrderList] = useAtom(OrderListAtom);
 
   const handleQuantity = (type: string): void => {
     if (type === "plus") {
