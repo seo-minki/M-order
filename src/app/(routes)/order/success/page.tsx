@@ -34,7 +34,7 @@ const Success = () => {
 
   const Timer = () => {
     return (
-      <div className="w-8 h-8] border border-white rounded-full mr-2">
+      <div className="w-8 h-8 border border-white rounded-full mr-2">
         {timer}
       </div>
     );

@@ -1,22 +1,22 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import {useState, useEffect, useMemo, Suspense, lazy} from "react";
+import {useAtom, useAtomValue} from 'jotai';
 import useCustomRouter from "@/utils/router";
-import { fetchMenu } from "@/utils/api";
-import { CategoryOptions, ProductOptions } from "@/types/menu";
-import { useAtom } from 'jotai';
 import { OrderListAtom } from "@/store/orderListAtom";
+import { menuAtom } from "@/store/menuAtom";
+
+import { ProductOptions } from "@/types/menu";
+import {navigateList} from '@/constants/navigate';
 
 import Header from "@/components/Header";
-import HomeIcon from "public/images/icons/home.png";
-import CartIcon from "public/images/icons/cart.png";
-
-import CategoryNavigation from "@/components/menu/CategoryNavigation";
-import ProductList from "@/components/menu/ProductList";
 import ButtonComponent from "@/components/ButtonComponent";
+import MenuLoading from '@/components/menu/MenuLoading';
+const CategoryNavigation = lazy(() => import('@/components/menu/CategoryNavigation'));
+const ProductList = lazy(() => import('@/components/menu/ProductList'));
 
 const Menu = () => {
-  const [menu, setMenu] = useState<CategoryOptions[]>([]);
+  const menu = useAtomValue(menuAtom);
   const [categoryId, setCategoryId] = useState<string>("");
   const [productList, setProductList] = useState<ProductOptions[]>([]);
   const [orderList] = useAtom(OrderListAtom);
@@ -25,23 +25,6 @@ const Menu = () => {
   const orderCount = useMemo((): number => {
     return orderList.reduce((acc, item) => acc + item?.quantity, 0);
   }, [orderList]);
-
-  // 헤더 네비게이션 정보
-  const navigateList = [
-    {
-      imagePath: HomeIcon,
-      routePath: "/",
-    },
-    {
-      imagePath: CartIcon,
-      routePath: "/cart",
-    },
-  ];
-
-  async function getMenu() {
-    const data = await fetchMenu();
-    setMenu(data.result);
-  }
 
   const handleCategoryType = (id: string) => {
     setCategoryId(id);
@@ -59,11 +42,9 @@ const Menu = () => {
   };
 
   useEffect(() => {
-    getMenu();
-  }, []);
-
-  useEffect(() => {
-    handleCategoryType(menu[0]?.categoryId);
+    if (menu.length > 0) {
+      handleCategoryType(menu[0]?.categoryId);
+    }
   }, [menu]);
   
   const OrderCountChip = () => {
@@ -80,12 +61,14 @@ const Menu = () => {
     <div className="min-h-screen">
       <Header navigateList={navigateList}></Header>
       <section className="relative pt-[72px] pb-[144px] max-w-5xl mx-auto">
-        <CategoryNavigation
-          categoryList={menu}
-          selectId={categoryId}
-          handleCategory={handleCategoryType}
-        ></CategoryNavigation>
-        <ProductList list={productList}></ProductList>
+        <Suspense fallback={<MenuLoading/>}>
+          <CategoryNavigation
+            categoryList={menu}
+            selectId={categoryId}
+            handleCategory={handleCategoryType}
+          ></CategoryNavigation>
+          <ProductList list={productList}></ProductList>
+        </Suspense>
       </section>
 
       <div className="fixed bottom-4 left-0 w-full px-4">
