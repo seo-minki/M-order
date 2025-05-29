@@ -13,7 +13,7 @@
 - Next.js + Typescript 를 이용한 첫 프로젝트 입니다. 부족한 내용은 공부하여 리팩토링 예정입니다.
 - 결제는 toss-payment 테스트 결제를 연동하였습니다.
 - 간단한 api를 설계를 통한 데이터를 응답 받아 상품 목록을 노출 시키고 있습니다.
-- 장바구니에 담은 상품, 수량은 Recoil을 이용하여 전역으로 상태를 관리하고 있습니다.
+- 장바구니에 담은 상품, 수량은 Jotai(~~Recoil~~ 지원중단으로 인한 변경)를 이용하여 전역으로 상태를 관리하고 있습니다.
 
 ## 개발기간 :technologist:
 
@@ -23,7 +23,7 @@
 
 - language: Typescript
 - framework: Next.js(v14)
-- 상태관리: Recoil
+- 상태관리: Jotai
 - css: tailwind CSS, css
 - animation: framer-emotion
 - node ver: 20.12.1
