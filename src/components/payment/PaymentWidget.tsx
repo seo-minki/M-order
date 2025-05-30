@@ -1,13 +1,10 @@
-import { useState, useEffect, useRef } from "react";
-import { PaymentWidgetInstance } from "@tosspayments/payment-widget-sdk";
+import { useState, useEffect, useRef } from 'react';
+import { PaymentWidgetInstance } from '@tosspayments/payment-widget-sdk';
 
-import {
-  fetchPaymentWidget,
-  renderPaymentWidget,
-  handlePaymentRequest,
-} from "@/hooks/paymentRequest";
-import { motion } from "framer-motion";
-import { SlideUp } from "@/utils/animation";
+import { fetchPaymentWidget, renderPaymentWidget, handlePaymentRequest } from '@/hooks/paymentRequest';
+import { motion } from 'framer-motion';
+import { SlideUp } from '@/utils/animation';
+import WidgetLoading from '@/components/payment/WidgetLoading';
 
 interface PaymentWidgetProps {
   price: number;
@@ -16,25 +13,21 @@ interface PaymentWidgetProps {
   handleWidget: () => void;
 }
 
-const PaymentWidget = ({
-  price,
-  payRequest,
-  handleWidget,
-  productName,
-}: PaymentWidgetProps) => {
+const PaymentWidget = ({ price, payRequest, handleWidget, productName }: PaymentWidgetProps) => {
   const [paymentWidget, setPaymentWidget] = useState<PaymentWidgetInstance | null>(null);
+  const [isReady, setReady] = useState(false);
   const paymentMethodsWidgetRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const initializeWidget = async () => {
-      try {
-        const fetch = await fetchPaymentWidget();
-        setPaymentWidget(fetch);
-      } catch (e) {
-        console.error(e);
-      }
-    };
+  const initializeWidget = async () => {
+    try {
+      const fetch = await fetchPaymentWidget();
+      setPaymentWidget(fetch);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
+  useEffect(() => {
     if (payRequest) {
       initializeWidget();
     }
@@ -42,7 +35,15 @@ const PaymentWidget = ({
 
   useEffect(() => {
     if (paymentWidget && price) {
-      renderPaymentWidget(paymentWidget, price, paymentMethodsWidgetRef);
+      const render = async () => {
+        try {
+          await renderPaymentWidget(paymentWidget, price, paymentMethodsWidgetRef);
+          setReady((prev) => !prev);
+        } catch (e) {
+          console.error(e);
+        }
+      };
+      render();
     }
   }, [paymentWidget, price]);
 
@@ -56,6 +57,7 @@ const PaymentWidget = ({
         exit={SlideUp.exit}
         transition={SlideUp.transition}
       >
+        {!isReady && <WidgetLoading />}
         <section className="w-[640px] rounded-xl overflow-hidden">
           <div id="payment-widget"></div>
           <button
