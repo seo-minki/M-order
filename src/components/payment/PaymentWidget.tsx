@@ -13,6 +13,11 @@ interface PaymentWidgetProps {
   handleWidget: () => void;
 }
 
+const codeRabbitTest = {
+  testName: 'rabbit',
+  description: '뭐라고 리뷰를 달까?',
+};
+
 const PaymentWidget = ({ price, payRequest, handleWidget, productName }: PaymentWidgetProps) => {
   const [paymentWidget, setPaymentWidget] = useState<PaymentWidgetInstance | null>(null);
   const [isReady, setReady] = useState(false);
